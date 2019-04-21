@@ -15,6 +15,7 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    //新增
     @GetMapping("test1")
     public Object test1(){
         TestEntity test = new TestEntity();
@@ -22,6 +23,7 @@ public class TestController {
         return testService.list();
     }
 
+    //修改，只改有值的字段
     @GetMapping("test2")
     public Object test2(){
         TestEntity test = new TestEntity();
@@ -32,6 +34,7 @@ public class TestController {
         return testService.list();
     }
 
+    //修改，通过warp条件
     @GetMapping("test3")
     public Object test3(){
         UpdateWrapper<TestEntity> wrap = new UpdateWrapper<>();
@@ -39,6 +42,18 @@ public class TestController {
         wrap.set("name", "123123123");
         testService.update(wrap);
         return testService.list();
+    }
+
+    //查询： 通过查询分页
+    @GetMapping("test4")
+    public Object test4(){
+        return testService.selectPage1();
+    }
+
+    //查询： 自定义SQL分页
+    @GetMapping("test5")
+    public Object test5(){
+        return testService.selectPage2();
     }
 
 }

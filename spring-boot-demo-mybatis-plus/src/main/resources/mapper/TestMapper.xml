@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xumou.boot.demo.mybatis.mapper.TestMapper">
+
+    <select id="select10" resultType="com.xumou.boot.demo.mybatis.entty.TestEntity">
+        select * from tbl_test t
+        <where>
+          <if test="test != null and test.name != null">
+              t.name = test.name
+          </if>
+          <if test="test == null or test.name == null">
+              t.name is null
+          </if>
+        </where>
+    </select>
+
+</mapper>
